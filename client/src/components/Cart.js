@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
+import { useNavigate } from "react-router-dom";
 const CartPage = () => {
     const [cartItems, setCartItems] = useState([]);
-
+    const navigate = useNavigate();
     // Fetch cart items
     const fetchCartItems = async () => {
         try {
@@ -94,6 +94,50 @@ const CartPage = () => {
             console.error("Error updating quantity:", error.response?.data?.message || error.message);
         }
     };
+    // const handleBuy = async () => {
+    //     try {
+    //         const token = localStorage.getItem("token");
+    //         const decoded = jwtDecode(token);
+    //         const userId = decoded.userId;
+
+    //         const response = await axios.post(
+    //             "http://localhost:5000/api/order/buy",
+    //             { userId },
+    //             { headers: { Authorization: `Bearer ${token}` } }
+    //         );
+
+    //         alert("Order placed successfully!");
+    //         // Redirect to the order summary or home page
+    //     } catch (error) {
+    //         console.error("Error placing order:", error);
+    //         alert("Error placing order");
+    //     }
+    // };
+    const handleBuy = () => {
+        // Navigate to the confirmation page where they can review the order before confirming
+        navigate("/confirmation");
+    };
+
+    // return (
+    //     <div>
+    //         <h1>Your Cart</h1>
+    //         {cartItems.length === 0 ? (
+    //             <p>Your cart is empty!</p>
+    //         ) : (
+    //             <div>
+    //                 <ul>
+    //                     {cartItems.map((item) => (
+    //                         <li key={item.productId._id}>
+    //                             <strong>{item.productId.name}</strong> - ${item.productId.price}
+    //                             <p>Quantity: {item.quantity}</p>
+    //                         </li>
+    //                     ))}
+    //                 </ul>
+    //                 <button onClick={handleBuy}>Buy Now</button>
+    //             </div>
+    //         )}
+    //     </div>
+    // );
 
     return (
         <div>
@@ -132,6 +176,7 @@ const CartPage = () => {
                     ))}
                 </ul>
             )}
+            <button onClick={handleBuy}>Buy Now</button>
         </div>
     );
 };

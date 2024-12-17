@@ -18,6 +18,7 @@ mongoose
 // Routes
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/order", require("./routes/orderRoutes"));
 app.use("/api/cart", require("./routes/cartRoutes"));
 
 app.listen(PORT, () => {

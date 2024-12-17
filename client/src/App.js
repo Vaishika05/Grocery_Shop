@@ -4,6 +4,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home"; // Add your home or main component
 import Cart from "./components/Cart";
+import OrderConfirmationPage from "./components/Confirmation";
+import OrderSummaryPage from "./components/Summary";
 
 const App = () => {
     return (
@@ -13,6 +15,8 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/confirmation" element={<OrderConfirmationPage />} />
+                <Route path="/summary" element={<OrderSummaryPage />} />
             </Routes>
         </Router>
     );
