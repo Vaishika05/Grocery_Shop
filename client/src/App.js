@@ -6,6 +6,7 @@ import Home from "./components/Home"; // Add your home or main component
 import Cart from "./components/Cart";
 import OrderConfirmationPage from "./components/Confirmation";
 import OrderSummaryPage from "./components/Summary";
+import "./style.css";
 
 const App = () => {
     return (
