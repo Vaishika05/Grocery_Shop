@@ -138,7 +138,8 @@ router.get("/confirmation/:userId", async (req, res) => {
 
     try {
         // Fetch the cart details
-        const cart = await Cart.findOne({ userId });
+        const cart = await Cart.findOne({ userId }).populate("products.productId");
+        // console.log("Received userId:", userId);
         if (!cart || cart.products.length === 0) {
             return res.status(400).json({ message: "Your cart is empty" });
         }
